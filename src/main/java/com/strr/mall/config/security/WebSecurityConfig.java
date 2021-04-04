@@ -59,10 +59,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     out.flush();
                     out.close();
                 })
-                .permitAll()
                 // 请求
                 .and()
                 .authorizeRequests()
+                .anyRequest().authenticated()
                 // 退出
                 .and()
                 .logout()
@@ -74,7 +74,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     out.flush();
                     out.close();
                 })
-                .permitAll()
                 // 禁用csrf
                 .and()
                 .csrf().disable();
