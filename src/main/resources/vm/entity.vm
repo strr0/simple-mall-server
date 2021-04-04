@@ -1,0 +1,39 @@
+package ${packageName}.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
+
+/**
+ * ${tableComment}
+ * @author ${author}
+ */
+@Entity
+@Table(name = "${tableName}")
+public class ${entityName} {
+#foreach($tableInfo in $tableInfoList)
+    /**
+     * ${tableInfo.columnComment}
+     */
+    private ${tableInfo.fieldType} ${tableInfo.fieldName};
+
+#end
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+#foreach($tableInfo in $tableInfoList)
+    #set ($methodName = $tableInfo.fieldName.substring(0, 1).toUpperCase() + $tableInfo.fieldName.substring(1))
+    @Column(name = "${tableInfo.columnName}")
+    public ${tableInfo.fieldType} get$methodName() {
+        return ${tableInfo.fieldName};
+    }
+
+    public void set$methodName(${tableInfo.fieldType} ${tableInfo.fieldName}) {
+        this.${tableInfo.fieldName} = ${tableInfo.fieldName};
+    }
+
+#end
+}

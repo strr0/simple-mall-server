@@ -1,0 +1,15 @@
+package ${packageName}.dao.impl;
+
+import ${packageName}.dao.${entityName}Dao;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+/**
+ * ${tableComment}
+ * @author ${author}
+ */
+public class ${entityName}DaoImpl implements ${entityName}Dao {
+    @PersistenceContext
+    private EntityManager entityManager;
+
+}

@@ -1,0 +1,11 @@
+package ${packageName}.service;
+
+import com.strr.mall.common.jpa.service.CommonService;
+import ${packageName}.entity.${entityName};
+
+/**
+ * ${tableComment}
+ * @author ${author}
+ */
+public interface ${entityName}Service extends CommonService<${entityName}, Integer> {
+}

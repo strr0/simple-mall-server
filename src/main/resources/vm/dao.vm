@@ -1,0 +1,8 @@
+package ${packageName}.dao;
+
+/**
+ * ${tableComment}
+ * @author ${author}
+ */
+public interface ${entityName}Dao {
+}

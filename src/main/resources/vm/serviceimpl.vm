@@ -1,0 +1,25 @@
+package ${packageName}.service.impl;
+
+import com.strr.mall.common.jpa.service.impl.CommonServiceImpl;
+import ${packageName}.entity.${entityName};
+import ${packageName}.repository.${entityName}Repository;
+import ${packageName}.service.${entityName}Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
+
+/**
+ * ${tableComment}
+ * @author ${author}
+ */
+@Service
+public class ${entityName}ServiceImpl extends CommonServiceImpl<${entityName}, Integer> implements ${entityName}Service {
+#set ($entityLowerName = $entityName.substring(0, 1).toLowerCase() + $entityName.substring(1))
+    @Autowired
+    private ${entityName}Repository ${entityLowerName}Repository;
+
+    @Override
+    protected JpaRepository<${entityName}, Integer> getJpaRepository() {
+        return ${entityLowerName}Repository;
+    }
+}
