@@ -33,7 +33,7 @@ public class Role {
     /**
      * 排序
      */
-    private Integer order;
+    private Integer seq;
 
     /**
      * 创建人
@@ -58,7 +58,7 @@ public class Role {
     /**
      * 状态
      */
-    private Integer status;
+    private Boolean status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -89,13 +89,13 @@ public class Role {
         this.remark = remark;
     }
 
-    @Column(name = "order")
-    public Integer getOrder() {
-        return order;
+    @Column(name = "seq")
+    public Integer getSeq() {
+        return seq;
     }
 
-    public void setOrder(Integer order) {
-        this.order = order;
+    public void setSeq(Integer seq) {
+        this.seq = seq;
     }
 
     @Column(name = "creator")
@@ -135,11 +135,11 @@ public class Role {
     }
 
     @Column(name = "status")
-    public Integer getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 

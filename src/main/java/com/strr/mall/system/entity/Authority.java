@@ -6,7 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 权限
@@ -53,7 +55,7 @@ public class Authority {
     /**
      * 是否为菜单
      */
-    private Integer isMenu;
+    private Boolean isMenu;
 
     /**
      * 创建人
@@ -78,7 +80,25 @@ public class Authority {
     /**
      * 状态
      */
-    private Integer status;
+    private Boolean status;
+
+    /**
+     * 子菜单
+     */
+    private List<Authority> children;
+
+    public Authority() {}
+
+    public Authority(Authority authority) {
+        id = authority.id;
+        url = authority.url;
+        path = authority.path;
+        name = authority.name;
+        component = authority.component;
+        icon = authority.icon;
+        parentId = authority.parentId;
+        isMenu = authority.isMenu;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -146,11 +166,11 @@ public class Authority {
     }
 
     @Column(name = "is_menu")
-    public Integer getIsMenu() {
+    public Boolean getIsMenu() {
         return isMenu;
     }
 
-    public void setIsMenu(Integer isMenu) {
+    public void setIsMenu(Boolean isMenu) {
         this.isMenu = isMenu;
     }
 
@@ -191,12 +211,20 @@ public class Authority {
     }
 
     @Column(name = "status")
-    public Integer getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
+    @Transient
+    public List<Authority> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Authority> children) {
+        this.children = children;
+    }
 }

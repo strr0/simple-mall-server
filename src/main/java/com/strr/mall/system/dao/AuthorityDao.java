@@ -15,4 +15,10 @@ public interface AuthorityDao {
      * @return
      */
     List<Authority> listByUserId(Integer uid);
+
+    /**
+     * 根据aid删除
+     * @param aid
+     */
+    void deleteRelByAid(Integer aid);
 }

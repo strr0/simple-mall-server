@@ -76,6 +76,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 })
                 // 禁用csrf
                 .and()
-                .csrf().disable();
+                .csrf().disable()
+                .exceptionHandling();
     }
 }

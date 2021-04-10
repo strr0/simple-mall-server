@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.Serializable;
 
@@ -72,7 +73,7 @@ public abstract class CommonController<T, PK extends Serializable> {
      * @return
      */
     @DeleteMapping("/delete")
-    public CommonResult delete(PK id) {
+    public CommonResult delete(@RequestParam PK id) {
         CommonResult result = new CommonResult();
         try {
             getService().deleteById(id);

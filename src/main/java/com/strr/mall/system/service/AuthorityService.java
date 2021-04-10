@@ -16,4 +16,25 @@ public interface AuthorityService extends CommonService<Authority, Integer> {
      * @return
      */
     List<Authority> listByUserId(Integer uid);
+
+    /**
+     * 所有菜单
+     * @param authorityList
+     * @return
+     */
+    List<Authority> getAllMenus(List<Authority> authorityList);
+
+    /**
+     * 菜单
+     * @param authorityList
+     * @return
+     */
+    List<Authority> getMenus(List<Authority> authorityList);
+
+    /**
+     * 按钮
+     * @param authorityList
+     * @return
+     */
+    List<Authority> getBtns(List<Authority> authorityList, Integer btnId);
 }

@@ -24,7 +24,7 @@ public class UserServiceTests {
         user.setEmail("admin@example.com");
         //user.setAvatar("");
         //user.setRemark("");
-        user.setStatus(1);
+        user.setStatus(true);
         userService.save(user);
     }
 }

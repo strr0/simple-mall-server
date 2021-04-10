@@ -2,6 +2,7 @@ package com.strr.mall.system.dao.impl;
 
 import com.strr.mall.system.dao.AuthorityDao;
 import com.strr.mall.system.entity.Authority;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,5 +30,16 @@ public class AuthorityDaoImpl implements AuthorityDao {
         Query query = entityManager.createNativeQuery(sql, Authority.class);
         query.setParameter("uid", uid);
         return query.getResultList();
+    }
+
+    /**
+     * 根据aid删除关系
+     * @param aid
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteRelByAid(Integer aid) {
+        entityManager.createNativeQuery("delete from sys_rel_role_authority where aid = :aid ")
+                .setParameter("aid", aid).executeUpdate();
     }
 }

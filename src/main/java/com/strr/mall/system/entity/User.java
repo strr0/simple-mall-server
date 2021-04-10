@@ -87,7 +87,7 @@ public class User implements UserDetails {
     /**
      * 状态
      */
-    private Integer status;
+    private Boolean status;
 
     /**
      * 权限
@@ -208,11 +208,11 @@ public class User implements UserDetails {
     }
 
     @Column(name = "status")
-    public Integer getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
@@ -280,6 +280,6 @@ public class User implements UserDetails {
     @JsonIgnore
     @Transient
     public boolean isEnabled() {
-        return status.equals(1);
+        return status;
     }
 }
