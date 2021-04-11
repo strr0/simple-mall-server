@@ -1,7 +1,7 @@
 package com.strr.mall.generator.util;
 
 import com.strr.mall.common.Constant;
-import com.strr.mall.generator.entity.TableInfo;
+import com.strr.mall.generator.entity.ColumnInfo;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.util.List;
@@ -9,26 +9,26 @@ import java.util.List;
 /**
  * 实体工具类
  */
-public class TableUtil {
+public class ColumnUtil {
     /**
      * 实体信息mapper
      */
-    private static RowMapper<TableInfo> tableInfoRowMapper = (rs, rowNum) -> {
-        TableInfo tableInfo = new TableInfo();
+    private static RowMapper<ColumnInfo> columnInfoRowMapper = (rs, rowNum) -> {
+        ColumnInfo columnInfo = new ColumnInfo();
         String columnName = rs.getString("COLUMN_NAME");
-        tableInfo.setColumnName(columnName);
-        tableInfo.setFieldName(getFieldName(columnName));
+        columnInfo.setColumnName(columnName);
+        columnInfo.setFieldName(getFieldName(columnName));
         String dataType = rs.getString("DATA_TYPE");
-        tableInfo.setDataType(dataType);
-        tableInfo.setFieldType(MysqlUtil.DATA_TYPE.getNameByIndex(dataType));
-        tableInfo.setColumnComment(rs.getString("COLUMN_COMMENT"));
+        columnInfo.setDataType(dataType);
+        columnInfo.setFieldType(MysqlUtil.DATA_TYPE.getNameByIndex(dataType));
+        columnInfo.setColumnComment(rs.getString("COLUMN_COMMENT"));
         String columnKey = rs.getString("COLUMN_KEY");
         if (Constant.PRI_KEY.equals(columnKey)) {
-            tableInfo.setIsKey(true);
+            columnInfo.setIsKey(true);
         } else {
-            tableInfo.setIsKey(false);
+            columnInfo.setIsKey(false);
         }
-        return tableInfo;
+        return columnInfo;
     };
 
     /**
@@ -37,9 +37,9 @@ public class TableUtil {
      * @param table
      * @return
      */
-    public static List<TableInfo> getTableInfoList(String schema, String table) {
+    public static List<ColumnInfo> getColumnInfoList(String schema, String table) {
         String sql = MysqlUtil.getQuerySql(schema, table);
-        return JdbcUtil.getMysqlJdbcTemplate().query(sql, tableInfoRowMapper);
+        return JdbcUtil.getMysqlJdbcTemplate().query(sql, columnInfoRowMapper);
     }
 
     /**

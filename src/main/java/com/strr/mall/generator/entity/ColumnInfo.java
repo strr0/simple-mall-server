@@ -4,7 +4,7 @@ package com.strr.mall.generator.entity;
  * 数据库表信息
  * @author strr
  */
-public class TableInfo {
+public class ColumnInfo {
     /**
      * 字段名称
      */
