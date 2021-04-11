@@ -15,26 +15,26 @@ import java.util.Date;
 @Entity
 @Table(name = "${tableName}")
 public class ${entityName} {
-#foreach($tableInfo in $tableInfoList)
+#foreach($columnInfo in $columnInfoList)
     /**
-     * ${tableInfo.columnComment}
+     * ${columnInfo.columnComment}
      */
-    private ${tableInfo.fieldType} ${tableInfo.fieldName};
+    private ${columnInfo.fieldType} ${columnInfo.fieldName};
 
 #end
-#foreach($tableInfo in $tableInfoList)
-#set ($methodName = $tableInfo.fieldName.substring(0, 1).toUpperCase() + $tableInfo.fieldName.substring(1))
-#if ($tableInfo.isKey)
+#foreach($columnInfo in $columnInfoList)
+#set ($methodName = $columnInfo.fieldName.substring(0, 1).toUpperCase() + $columnInfo.fieldName.substring(1))
+#if ($columnInfo.isKey)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 #end
-    @Column(name = "${tableInfo.columnName}")
-    public ${tableInfo.fieldType} get$methodName() {
-        return ${tableInfo.fieldName};
+    @Column(name = "${columnInfo.columnName}")
+    public ${columnInfo.fieldType} get$methodName() {
+        return ${columnInfo.fieldName};
     }
 
-    public void set$methodName(${tableInfo.fieldType} ${tableInfo.fieldName}) {
-        this.${tableInfo.fieldName} = ${tableInfo.fieldName};
+    public void set$methodName(${columnInfo.fieldType} ${columnInfo.fieldName}) {
+        this.${columnInfo.fieldName} = ${columnInfo.fieldName};
     }
 
 #end

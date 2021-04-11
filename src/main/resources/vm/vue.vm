@@ -17,8 +17,8 @@
             <el-table :data="${entityLowerName}List" stripe border v-loading="loading" style="width: 100%"
               highlight-current-row @current-change="selectCurrentRow">
                 <el-table-column type="selection" />
-#foreach($tableInfo in $tableInfoList)
-                <el-table-column prop="${tableInfo.fieldName}" label="${tableInfo.columnComment}" />
+#foreach($columnInfo in $columnInfoList)
+                <el-table-column prop="${columnInfo.fieldName}" label="${columnInfo.columnComment}" />
 #end
             </el-table>
             <el-pagination background
@@ -30,18 +30,18 @@
         <div>
             <el-dialog :title="title" :visible.sync="showModalVisible" width="50%">
                 <el-form :model="${entityLowerName}" label-position="right" label-width="80px">
-#foreach($tableInfo in $tableInfoList)
+#foreach($columnInfo in $columnInfoList)
 #if ($foreach.count % 2 == 1)
                     <el-row>
                         <el-col :span="12">
-                            <el-form-item prop="${tableInfo.fieldName}" label="${tableInfo.columnComment}">
-                                <el-input type="text" v-model="${entityLowerName}.${tableInfo.fieldName}" style="width: 80%" disabled />
+                            <el-form-item prop="${columnInfo.fieldName}" label="${columnInfo.columnComment}">
+                                <el-input type="text" v-model="${entityLowerName}.${columnInfo.fieldName}" style="width: 80%" disabled />
                             </el-form-item>
                         </el-col>
 #else
                         <el-col :span="12">
-                            <el-form-item prop="${tableInfo.fieldName}" label="${tableInfo.columnComment}">
-                                <el-input type="text" v-model="${entityLowerName}.${tableInfo.fieldName}" style="width: 80%" disabled />
+                            <el-form-item prop="${columnInfo.fieldName}" label="${columnInfo.columnComment}">
+                                <el-input type="text" v-model="${entityLowerName}.${columnInfo.fieldName}" style="width: 80%" disabled />
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -54,19 +54,19 @@
         <div>
             <el-dialog :title="title" :visible.sync="editModalVisible" width="50%">
                 <el-form :model="${entityLowerName}" ref="${entityLowerName}" :rules="rules" label-position="right" label-width="80px">
-#foreach($tableInfo in $tableInfoList)
+#foreach($columnInfo in $columnInfoList)
 #if ($foreach.count % 2 == 1)
                     <el-row>
                         <el-col :span="12">
-                            <el-form-item prop="${tableInfo.fieldName}" label="${tableInfo.columnComment}">
-                                <el-input type="text" v-model="${entityLowerName}.${tableInfo.fieldName}" placeholder="请输入${tableInfo.columnComment}"
+                            <el-form-item prop="${columnInfo.fieldName}" label="${columnInfo.columnComment}">
+                                <el-input type="text" v-model="${entityLowerName}.${columnInfo.fieldName}" placeholder="请输入${columnInfo.columnComment}"
                                   prefix-icon="el-icon-edit" style="width: 80%" />
                             </el-form-item>
                         </el-col>
 #else
                         <el-col :span="12">
-                            <el-form-item prop="${tableInfo.fieldName}" label="${tableInfo.columnComment}">
-                                <el-input type="text" v-model="${entityLowerName}.${tableInfo.fieldName}" placeholder="请输入${tableInfo.columnComment}"
+                            <el-form-item prop="${columnInfo.fieldName}" label="${columnInfo.columnComment}">
+                                <el-input type="text" v-model="${entityLowerName}.${columnInfo.fieldName}" placeholder="请输入${columnInfo.columnComment}"
                                   prefix-icon="el-icon-edit" style="width: 80%" />
                             </el-form-item>
                         </el-col>
@@ -98,13 +98,13 @@
                 showModalVisible: false,
                 editModalVisible: false,
                 ${entityLowerName}: {
-#foreach($tableInfo in $tableInfoList)
-                ${tableInfo.fieldName}: '',
+#foreach($columnInfo in $columnInfoList)
+                    ${columnInfo.fieldName}: '',
 #end
                 },
                 rules: {
-#foreach($tableInfo in $tableInfoList)
-                    ${tableInfo.fieldName}: [{required: true, message: '请输入${tableInfo.columnComment}', trigger: 'blur'}],
+#foreach($columnInfo in $columnInfoList)
+                    ${columnInfo.fieldName}: [{required: true, message: '请输入${columnInfo.columnComment}', trigger: 'blur'}],
 #end
                 }
             }
@@ -147,8 +147,8 @@
             },
             empty() {
                 this.${entityLowerName} = {
-#foreach($tableInfo in $tableInfoList)
-                    ${tableInfo.fieldName}: '',
+#foreach($columnInfo in $columnInfoList)
+                    ${columnInfo.fieldName}: '',
 #end
                 }
             },
@@ -224,12 +224,12 @@
                             this.init${entityName}()
                         }
                     })
-            }).catch(() => {
-                    this.$message({
-                    message: '已取消',
-                    type: 'info'
+                }).catch(() => {
+                        this.$message({
+                        message: '已取消',
+                        type: 'info'
+                    })
                 })
-            })
             }
         }
     }
