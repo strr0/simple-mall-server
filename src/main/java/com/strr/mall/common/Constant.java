@@ -10,6 +10,11 @@ public class Constant {
     public static final Integer MENU_ROOT_ID = 1;
 
     /**
+     * 字典根id
+     */
+    public static final Integer DICT_ROOT_ID = 1;
+
+    /**
      * 主键
      */
     public static final String PRI_KEY = "PRI";
