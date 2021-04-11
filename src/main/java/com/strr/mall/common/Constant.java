@@ -10,12 +10,7 @@ public class Constant {
     public static final Integer MENU_ROOT_ID = 1;
 
     /**
-     * 是
+     * 主键
      */
-    public static final Integer YES = 1;
-
-    /**
-     * 否
-     */
-    public static final Integer NO = 0;
+    public static final String PRI_KEY = "PRI";
 }

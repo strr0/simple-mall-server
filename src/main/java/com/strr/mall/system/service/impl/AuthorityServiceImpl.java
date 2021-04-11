@@ -89,10 +89,10 @@ public class AuthorityServiceImpl extends CommonServiceImpl<Authority, Integer> 
      * @return
      */
     @Override
-    public List<Authority> getBtns(List<Authority> authorityList, Integer btnId) {
+    public List<Authority> getBtns(List<Authority> authorityList, Integer menuId) {
         List<Authority> btns = new ArrayList<>();
         for (Authority authority : authorityList) {
-            if (authority.getParentId().equals(btnId) && !authority.getIsMenu()) {
+            if (authority.getParentId().equals(menuId) && !authority.getIsMenu()) {
                 btns.add(new Authority(authority));
             }
         }

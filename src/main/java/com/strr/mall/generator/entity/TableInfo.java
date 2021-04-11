@@ -21,6 +21,11 @@ public class TableInfo {
     private String columnComment;
 
     /**
+     * 是否主键
+     */
+    private Boolean isKey;
+
+    /**
      * 实体字段名称
      */
     private String fieldName;
@@ -52,6 +57,14 @@ public class TableInfo {
 
     public void setColumnComment(String columnComment) {
         this.columnComment = columnComment;
+    }
+
+    public Boolean getIsKey() {
+        return isKey;
+    }
+
+    public void setIsKey(Boolean isKey) {
+        this.isKey = isKey;
     }
 
     public String getFieldName() {

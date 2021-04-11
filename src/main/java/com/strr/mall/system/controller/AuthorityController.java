@@ -71,10 +71,10 @@ public class AuthorityController extends CommonController<Authority, Integer> {
      * @return
      */
     @GetMapping("/getBtns")
-    public CommonResult getBtns(@AuthenticationPrincipal User user, Integer btnId) {
+    public CommonResult getBtns(@AuthenticationPrincipal User user, Integer menuId) {
         CommonResult commonResult = new CommonResult();
         try {
-            commonResult.setData(authorityService.getBtns(user.getAuthorityList(), btnId));
+            commonResult.setData(authorityService.getBtns(user.getAuthorityList(), menuId));
             commonResult.setSuccess(true);
         } catch (Exception e) {
             e.printStackTrace();

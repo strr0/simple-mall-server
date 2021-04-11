@@ -36,5 +36,5 @@ public interface AuthorityService extends CommonService<Authority, Integer> {
      * @param authorityList
      * @return
      */
-    List<Authority> getBtns(List<Authority> authorityList, Integer btnId);
+    List<Authority> getBtns(List<Authority> authorityList, Integer menuId);
 }

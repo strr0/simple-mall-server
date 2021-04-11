@@ -54,7 +54,7 @@ public class MysqlUtil {
      * @return
      */
     public static String getQuerySql(String schema, String table) {
-        return "select COLUMN_NAME, DATA_TYPE, COLUMN_COMMENT from INFORMATION_SCHEMA.COLUMNS where table_schema = '" + schema + "' " +
-                "and table_name = '" + table + "' order by ORDINAL_POSITION";
+        return "select COLUMN_NAME, DATA_TYPE, COLUMN_COMMENT, COLUMN_KEY from INFORMATION_SCHEMA.COLUMNS " +
+                "where table_schema = '" + schema + "' and table_name = '" + table + "' order by ORDINAL_POSITION";
     }
 }

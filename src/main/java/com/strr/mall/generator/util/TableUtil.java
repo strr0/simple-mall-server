@@ -1,5 +1,6 @@
 package com.strr.mall.generator.util;
 
+import com.strr.mall.common.Constant;
 import com.strr.mall.generator.entity.TableInfo;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -21,6 +22,12 @@ public class TableUtil {
         tableInfo.setDataType(dataType);
         tableInfo.setFieldType(MysqlUtil.DATA_TYPE.getNameByIndex(dataType));
         tableInfo.setColumnComment(rs.getString("COLUMN_COMMENT"));
+        String columnKey = rs.getString("COLUMN_KEY");
+        if (Constant.PRI_KEY.equals(columnKey)) {
+            tableInfo.setIsKey(true);
+        } else {
+            tableInfo.setIsKey(false);
+        }
         return tableInfo;
     };
 

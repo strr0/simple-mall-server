@@ -22,10 +22,12 @@ public class ${entityName} {
     private ${tableInfo.fieldType} ${tableInfo.fieldName};
 
 #end
+#foreach($tableInfo in $tableInfoList)
+#set ($methodName = $tableInfo.fieldName.substring(0, 1).toUpperCase() + $tableInfo.fieldName.substring(1))
+#if ($tableInfo.isKey)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-#foreach($tableInfo in $tableInfoList)
-    #set ($methodName = $tableInfo.fieldName.substring(0, 1).toUpperCase() + $tableInfo.fieldName.substring(1))
+#end
     @Column(name = "${tableInfo.columnName}")
     public ${tableInfo.fieldType} get$methodName() {
         return ${tableInfo.fieldName};

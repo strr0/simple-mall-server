@@ -14,12 +14,12 @@ import java.util.List;
 public class CodeGenerator {
     public static void main(String[] args) {
         String schema = "simple_mall";
-        String table = "sys_user";
-        String comment = "用户";
+        String table = "sys_test";
+        String comment = "测试表";
         String author = "strr";
 
         String packageName = "com.strr.mall.system";
-        String entityName = "User";
+        String entityName = "TestInfo";
 
         String outputPath = "src/main/java/" + packageName.replace(".", "/");
         VelocityContext context = new VelocityContext();
@@ -37,5 +37,6 @@ public class CodeGenerator {
         VelocityUtil.merge(context, "controller.vm", outputPath + "/controller/" + entityName + "Controller.java");
         //VelocityUtil.merge(context, "dao.vm", outputPath + "/dao/" + entityName + "Dao.java");
         //VelocityUtil.merge(context, "daoimpl.vm", outputPath + "/dao/impl/" + entityName + "DaoImpl.java");
+        VelocityUtil.merge(context, "vue.vm", "src/main/resources/templates/" + entityName + ".vue");
     }
 }

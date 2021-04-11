@@ -63,6 +63,16 @@ public class Authority {
     private Integer creator;
 
     /**
+     * 按钮类型
+     */
+    private String type;
+
+    /**
+     * 按钮事件
+     */
+    private String func;
+
+    /**
      * 创建时间
      */
     private Date createTime;
@@ -98,6 +108,8 @@ public class Authority {
         icon = authority.icon;
         parentId = authority.parentId;
         isMenu = authority.isMenu;
+        type = authority.type;
+        func = authority.func;
     }
 
     @Id
@@ -172,6 +184,24 @@ public class Authority {
 
     public void setIsMenu(Boolean isMenu) {
         this.isMenu = isMenu;
+    }
+
+    @Column(name = "type")
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Column(name = "func")
+    public String getFunc() {
+        return func;
+    }
+
+    public void setFunc(String func) {
+        this.func = func;
     }
 
     @Column(name = "creator")
