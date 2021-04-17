@@ -10,7 +10,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 字典
@@ -42,6 +44,33 @@ public class DictionaryServiceImpl extends CommonServiceImpl<Dictionary, Integer
             }
         }
         return dictionaryTree;
+    }
+
+    @Override
+    public Map<String, Object> getCodePath() {
+        List<Dictionary> dictionaryList = dictionaryRepository.findAll();
+        List<Dictionary> javaCodePath = new ArrayList<>();
+        List<Dictionary> vueCodePath = new ArrayList<>();
+        for (Dictionary dictionary : dictionaryList) {
+            switch (dictionary.getParentId()) {
+                case Constant.DICT_JAVA_ID:
+                    Dictionary javaNode = new Dictionary(dictionary);
+                    javaNode.setChildren(getDictionaryNodes(dictionary.getId(), dictionaryList));
+                    javaCodePath.add(javaNode);
+                    break;
+                case Constant.DICT_VUE_ID:
+                    Dictionary vueNode = new Dictionary(dictionary);
+                    vueNode.setChildren(getDictionaryNodes(dictionary.getId(), dictionaryList));
+                    vueCodePath.add(vueNode);
+                    break;
+                default:
+                    break;
+            }
+        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("javaCodePath", javaCodePath);
+        map.put("vueCodePath", vueCodePath);
+        return map;
     }
 
     /**

@@ -41,7 +41,7 @@ public class ColumnInfoDaoImpl implements ColumnInfoDao {
     @Override
     public List<ColumnInfo> getColumnInfoList(String schema, String table) {
         String sql = "select COLUMN_NAME, DATA_TYPE, COLUMN_COMMENT, COLUMN_KEY from INFORMATION_SCHEMA.COLUMNS " +
-                "where table_schema = ? and table_name = ? order by ORDINAL_POSITION";
+                "where TABLE_SCHEMA = ? and TABLE_NAME = ? order by ORDINAL_POSITION";
         return jdbcTemplate.query(sql, new Object[] {schema, table}, columnInfoRowMapper);
     }
 }

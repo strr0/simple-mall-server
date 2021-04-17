@@ -32,6 +32,11 @@ public class GeneratorInfo {
     private String entityName;
 
     /**
+     * 类型
+     */
+    private String outputType;
+
+    /**
      * 输出路径
      */
     private String outputPath;
@@ -82,6 +87,14 @@ public class GeneratorInfo {
 
     public void setEntityName(String entityName) {
         this.entityName = entityName;
+    }
+
+    public String getOutputType() {
+        return outputType;
+    }
+
+    public void setOutputType(String outputType) {
+        this.outputType = outputType;
     }
 
     public String getOutputPath() {
