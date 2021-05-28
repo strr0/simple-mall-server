@@ -98,14 +98,4 @@ public class AuthorityServiceImpl extends CommonServiceImpl<Authority, Integer> 
         }
         return btns;
     }
-
-    /**
-     * 根据aid删除
-     * @param aid
-     */
-    @Override
-    public void deleteById(Integer id) {
-        authorityRepository.deleteById(id);
-        authorityRepository.deleteRelByAid(id);
-    }
 }

@@ -48,16 +48,6 @@ public class RoleServiceImpl extends CommonServiceImpl<Role, Integer> implements
     }
 
     /**
-     * 删除角色
-     * @param id
-     */
-    @Override
-    public void deleteById(Integer id) {
-        roleRepository.deleteById(id);
-        roleRepository.deleteRelByRid(id);
-    }
-
-    /**
      * 获取角色权限关系
      * @param rid
      * @return

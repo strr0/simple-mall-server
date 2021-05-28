@@ -55,17 +55,4 @@ public class RoleDaoImpl implements RoleDao {
                     .setParameter("rid", rid).setParameter("aid", aid).executeUpdate();
         }
     }
-
-    /**
-     * 根据rid删除
-     * @param rid
-     */
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public void deleteRelByRid(Integer rid) {
-        entityManager.createNativeQuery("delete from sys_rel_role_authority where rid = :rid ")
-                .setParameter("rid", rid).executeUpdate();
-        entityManager.createNativeQuery("delete from sys_rel_user_role where rid = :rid ")
-                .setParameter("rid", rid).executeUpdate();
-    }
 }

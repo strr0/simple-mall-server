@@ -5,13 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -88,6 +82,11 @@ public class User implements UserDetails {
      * 状态
      */
     private Boolean status;
+
+    /**
+     * 角色
+     */
+    private List<Role> roleList;
 
     /**
      * 权限
@@ -214,6 +213,17 @@ public class User implements UserDetails {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinTable(name = "sys_rel_user_role", joinColumns = @JoinColumn(name = "uid"), inverseJoinColumns = @JoinColumn(name = "rid"))
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
     }
 
     @JsonIgnore

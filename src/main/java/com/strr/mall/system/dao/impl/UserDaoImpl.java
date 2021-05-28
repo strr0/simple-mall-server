@@ -56,15 +56,4 @@ public class UserDaoImpl implements UserDao {
                     .setParameter("uid", uid).setParameter("rid", rid).executeUpdate();
         }
     }
-
-    /**
-     * 根据uid删除
-     * @param uid
-     */
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public void deleteRelByUid(Integer uid) {
-        entityManager.createNativeQuery("delete from sys_rel_user_role where uid = :uid ")
-                .setParameter("uid", uid).executeUpdate();
-    }
 }

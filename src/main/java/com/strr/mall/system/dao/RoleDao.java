@@ -27,10 +27,4 @@ public interface RoleDao {
      * @param aids
      */
     void deleteRel(Integer rid, List<Integer> aids);
-
-    /**
-     * 根据rid删除
-     * @param rid
-     */
-    void deleteRelByRid(Integer rid);
 }

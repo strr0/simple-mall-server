@@ -27,10 +27,4 @@ public interface UserDao {
      * @param rids
      */
     void deleteRel(Integer uid, List<Integer> rids);
-
-    /**
-     * 根据uid删除
-     * @param uid
-     */
-    void deleteRelByUid(Integer uid);
 }

@@ -65,16 +65,6 @@ public class UserServiceImpl extends CommonServiceImpl<User, Integer> implements
     }
 
     /**
-     * 删除用户
-     * @param id
-     */
-    @Override
-    public void deleteById(Integer id) {
-        userRepository.deleteById(id);
-        userRepository.deleteRelByUid(id);
-    }
-
-    /**
      * 获取用户角色关系
      * @param uid
      * @return

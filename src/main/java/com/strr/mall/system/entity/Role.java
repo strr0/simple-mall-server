@@ -1,12 +1,10 @@
 package com.strr.mall.system.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 角色
@@ -59,6 +57,16 @@ public class Role {
      * 状态
      */
     private Boolean status;
+
+    /**
+     * 用户
+     */
+    private List<User> userList;
+
+    /**
+     * 权限
+     */
+    private List<Authority> authorityList;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -143,4 +151,25 @@ public class Role {
         this.status = status;
     }
 
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinTable(name = "sys_rel_user_role", joinColumns = @JoinColumn(name = "rid"), inverseJoinColumns = @JoinColumn(name = "uid"))
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
+    }
+
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinTable(name = "sys_rel_role_authority", joinColumns = @JoinColumn(name = "rid"), inverseJoinColumns = @JoinColumn(name = "aid"))
+    public List<Authority> getAuthorityList() {
+        return authorityList;
+    }
+
+    public void setAuthorityList(List<Authority> authorityList) {
+        this.authorityList = authorityList;
+    }
 }

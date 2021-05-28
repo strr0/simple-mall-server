@@ -1,12 +1,8 @@
 package com.strr.mall.system.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -91,6 +87,11 @@ public class Authority {
      * 状态
      */
     private Boolean status;
+
+    /**
+     * 角色
+     */
+    private List<Role> roleList;
 
     /**
      * 子菜单
@@ -247,6 +248,17 @@ public class Authority {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinTable(name = "sys_rel_role_authority", joinColumns = @JoinColumn(name = "aid"), inverseJoinColumns = @JoinColumn(name = "rid"))
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
     }
 
     @Transient
