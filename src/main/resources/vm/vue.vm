@@ -18,7 +18,9 @@
               highlight-current-row @current-change="selectCurrentRow">
                 <el-table-column type="selection" />
 #foreach($columnInfo in $columnInfoList)
+#if ($foreach.count != 1)
                 <el-table-column prop="${columnInfo.fieldName}" label="${columnInfo.columnComment}" />
+#end
 #end
             </el-table>
             <el-pagination background
@@ -31,7 +33,8 @@
             <el-dialog :title="title" :visible.sync="showModalVisible" width="50%">
                 <el-form :model="${entityLowerName}" label-position="right" label-width="80px">
 #foreach($columnInfo in $columnInfoList)
-#if ($foreach.count % 2 == 1)
+#if ($foreach.count != 1)
+#if ($foreach.count % 2 == 0)
                     <el-row>
                         <el-col :span="12">
                             <el-form-item prop="${columnInfo.fieldName}" label="${columnInfo.columnComment}">
@@ -46,6 +49,10 @@
                         </el-col>
                     </el-row>
 #end
+#end
+#end
+#if ($columnInfoList.size() > 0 && $columnInfoList.size() % 2 == 0)
+                    </el-row>
 #end
                 </el-form>
             </el-dialog>
@@ -55,7 +62,8 @@
             <el-dialog :title="title" :visible.sync="editModalVisible" width="50%">
                 <el-form :model="${entityLowerName}" ref="${entityLowerName}" :rules="rules" label-position="right" label-width="80px">
 #foreach($columnInfo in $columnInfoList)
-#if ($foreach.count % 2 == 1)
+#if ($foreach.count != 1)
+#if ($foreach.count % 2 == 0)
                     <el-row>
                         <el-col :span="12">
                             <el-form-item prop="${columnInfo.fieldName}" label="${columnInfo.columnComment}">
@@ -72,6 +80,10 @@
                         </el-col>
                     </el-row>
 #end
+#end
+#end
+#if ($columnInfoList.size() > 0 && $columnInfoList.size() % 2 == 0)
+                    </el-row>
 #end
                 </el-form>
                 <span slot="footer" class="dialog-footer">
