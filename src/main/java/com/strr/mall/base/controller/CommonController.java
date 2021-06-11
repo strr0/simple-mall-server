@@ -1,7 +1,7 @@
-package com.strr.mall.common.jpa.controller;
+package com.strr.mall.base.controller;
 
 import com.strr.mall.common.CommonResult;
-import com.strr.mall.common.jpa.service.CommonService;
+import com.strr.mall.base.service.CommonService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;

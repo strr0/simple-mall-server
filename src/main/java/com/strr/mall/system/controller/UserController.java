@@ -1,8 +1,8 @@
 package com.strr.mall.system.controller;
 
 import com.strr.mall.common.CommonResult;
-import com.strr.mall.common.jpa.controller.CommonController;
-import com.strr.mall.common.jpa.service.CommonService;
+import com.strr.mall.base.controller.CommonController;
+import com.strr.mall.base.service.CommonService;
 import com.strr.mall.system.entity.User;
 import com.strr.mall.system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

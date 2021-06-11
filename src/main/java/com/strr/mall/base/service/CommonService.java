@@ -1,4 +1,4 @@
-package com.strr.mall.common.jpa.service;
+package com.strr.mall.base.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

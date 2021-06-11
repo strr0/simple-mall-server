@@ -1,6 +1,6 @@
-package com.strr.mall.common.jpa.service.impl;
+package com.strr.mall.base.service.impl;
 
-import com.strr.mall.common.jpa.service.CommonService;
+import com.strr.mall.base.service.CommonService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

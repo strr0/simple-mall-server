@@ -1,6 +1,6 @@
 package com.strr.mall.product.service.impl;
 
-import com.strr.mall.common.jpa.service.impl.CommonServiceImpl;
+import com.strr.mall.base.service.impl.CommonServiceImpl;
 import com.strr.mall.product.entity.ProductBrand;
 import com.strr.mall.product.repository.ProductBrandRepository;
 import com.strr.mall.product.service.ProductBrandService;

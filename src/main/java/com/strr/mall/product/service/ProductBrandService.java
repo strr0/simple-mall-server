@@ -1,6 +1,6 @@
 package com.strr.mall.product.service;
 
-import com.strr.mall.common.jpa.service.CommonService;
+import com.strr.mall.base.service.CommonService;
 import com.strr.mall.product.entity.ProductBrand;
 
 /**

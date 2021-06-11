@@ -1,6 +1,6 @@
 package com.strr.mall.system.service.impl;
 
-import com.strr.mall.common.jpa.service.impl.CommonServiceImpl;
+import com.strr.mall.base.service.impl.CommonServiceImpl;
 import com.strr.mall.system.entity.User;
 import com.strr.mall.system.repository.UserRepository;
 import com.strr.mall.system.service.UserService;

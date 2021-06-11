@@ -1,7 +1,7 @@
 package com.strr.mall.product.controller;
 
-import com.strr.mall.common.jpa.controller.CommonController;
-import com.strr.mall.common.jpa.service.CommonService;
+import com.strr.mall.base.controller.CommonController;
+import com.strr.mall.base.service.CommonService;
 import com.strr.mall.product.entity.ProductBrand;
 import com.strr.mall.product.service.ProductBrandService;
 import io.swagger.annotations.Api;

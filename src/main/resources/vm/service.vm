@@ -1,6 +1,6 @@
 package ${packageName}.service;
 
-import com.strr.mall.common.jpa.service.CommonService;
+import com.strr.mall.base.service.CommonService;
 import ${packageName}.entity.${entityName};
 
 /**

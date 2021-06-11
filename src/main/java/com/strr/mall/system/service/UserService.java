@@ -1,6 +1,6 @@
 package com.strr.mall.system.service;
 
-import com.strr.mall.common.jpa.service.CommonService;
+import com.strr.mall.base.service.CommonService;
 import com.strr.mall.system.entity.User;
 
 import java.util.List;
